@@ -17,7 +17,10 @@ class EmailController extends AbstractController
             ->from('tikkenn@yandex.ru')
             ->to('tikken23@gmail.com')
             ->subject('Nice to meet you')
-            ->htmlTemplate('email/index.html.twig');
+            ->htmlTemplate('email/index.html.twig')
+            ->context([
+                'user' => 'notorious'
+            ]);
 
         $mailer->send($email);
 
