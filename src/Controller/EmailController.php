@@ -5,13 +5,13 @@ namespace App\Controller;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\Mailer;
 
 class EmailController extends AbstractController
 {
     #[Route('/email/send', name: 'test_email')]
-    public function index(MailerInterface $mailer): Response
+    public function index(Mailer $mailer): Response
     {
         $email = (new TemplatedEmail())
             ->from('tikkenn@yandex.ru')
@@ -22,9 +22,8 @@ class EmailController extends AbstractController
                 'user' => 'notorious'
             ]);
 
-        $mailer->send($email);
-
-        $response = new Response('ok');
+        $serviceResponse = $mailer->sendBasicEmail($email);
+        $response = new Response($serviceResponse);
         return $response;
     }
 }
