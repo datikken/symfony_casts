@@ -10,3 +10,11 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+
+const heading = document.querySelector('.heading');
+
+window.onload = () => {
+    heading.addEventListener('click', () => {
+        import('./basicAlert').then(module => console.warn(module))
+    })
+}
