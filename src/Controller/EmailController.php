@@ -15,7 +15,7 @@ class EmailController extends AbstractController
     {
         $email = (new TemplatedEmail())
             ->from('tikkenn@yandex.ru')
-            ->to('tikken23@gmail.com')
+            ->to('someemail@mail.ru')
             ->subject('Nice to meet you')
             ->htmlTemplate('email/index.html.twig')
             ->context([
