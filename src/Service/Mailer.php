@@ -19,4 +19,9 @@ class Mailer
         $response = new Response("Email has been sent");
         return $response;
     }
+
+    public function subscribeMailChimp($email)
+    {
+
+    }
 }

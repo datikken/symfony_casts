@@ -10,7 +10,7 @@ use App\Service\Mailer;
 
 class EmailController extends AbstractController
 {
-    #[Route('/email/send', name: 'test_email')]
+    #[Route('/email/send', name: 'email')]
     public function index(Mailer $mailer): Response
     {
         $email = (new TemplatedEmail())
@@ -25,5 +25,10 @@ class EmailController extends AbstractController
         $serviceResponse = $mailer->sendBasicEmail($email);
         $response = new Response($serviceResponse);
         return $response;
+    }
+
+    #[Route('/email/subscribe/{email}', name: 'subscribe')]
+    public function subscribe()
+    {
     }
 }
