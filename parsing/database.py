@@ -15,4 +15,17 @@ class Link(Base):
     id = Column(Integer, primary_key=True)
     url = Column(String(255))
 
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
+
+# link = Link(url='https://www.jamieoliver.com/')
+# link2 = Link(url='https://cointelegraph.com/')
+
+# session.add_all([link, link2])
+# session.commit()
+
+
+# To retrieve data
+all_links = session.query(Link)
+
+for link in all_links:
+    print(link.url)
