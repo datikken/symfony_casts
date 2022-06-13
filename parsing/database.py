@@ -23,9 +23,9 @@ class Link(Base):
 # session.add_all([link, link2])
 # session.commit()
 
-
 # To retrieve data
-all_links = session.query(Link)
+# all_links = session.query(Link)
+# for link in all_links:
+#     print(link.url)
 
-for link in all_links:
-    print(link.url)
+link = session.query(Link).first()
