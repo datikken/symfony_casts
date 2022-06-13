@@ -7,6 +7,12 @@ async def main():
         browser = await p.chromium.launch()
         page = await browser.new_page()
         await page.goto(link.url)
+        # await page.screenshot(path="example.png")
+        links = await page.query_selector_all("a")
+
+        for linx in links:
+            print(await linx.get_attribute('href'))
+
         print(await page.title())
         await browser.close()
 
