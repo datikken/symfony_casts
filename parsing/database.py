@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import pymysql
 
-engine = create_engine('mysql+pymysql://root:password@127.0.0.1:53123/main', echo=False)
+engine = create_engine('mysql+pymysql://root:password@127.0.0.1:3306/main', echo=False)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -15,9 +15,16 @@ class Link(Base):
     id = Column(Integer, primary_key=True)
     url = Column(String(255))
 
-# Base.metadata.create_all(engine)
+# TODO Create parsed links
+class ParsedLink(Base):
+    __tablename__ = 'parsed_link'
+    id = Column(Integer, primary_key=True)
+    url = Column(String(255))
 
-# link = Link(url='https://www.jamieoliver.com/')
+
+
+Base.metadata.create_all(engine)
+
 # link2 = Link(url='https://cointelegraph.com/')
 
 # session.add_all([link, link2])
@@ -27,5 +34,3 @@ class Link(Base):
 # all_links = session.query(Link)
 # for link in all_links:
 #     print(link.url)
-
-link = session.query(Link).first()
